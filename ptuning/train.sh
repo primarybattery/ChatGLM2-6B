@@ -19,9 +19,9 @@ torchrun --standalone --nnodes=1 --nproc-per-node=$NUM_GPUS main.py \
     --per_device_eval_batch_size 1 \
     --gradient_accumulation_steps 8 \
     --predict_with_generate \
-    --max_steps 100 \
+    --max_steps 20 \
     --logging_steps 10 \
-    --save_steps 10 \
+    --save_steps 1 \
     --learning_rate $LR \
     --pre_seq_len $PRE_SEQ_LEN \
     --quantization_bit 4
