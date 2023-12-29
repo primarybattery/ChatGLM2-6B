@@ -1,6 +1,7 @@
 PRE_SEQ_LEN=128
 LR=2e-2
 NUM_GPUS=1
+
 torchrun --standalone --nnodes=1 --nproc-per-node=$NUM_GPUS main.py \
     --do_train \
     --train_file /content/ChatGLM2-6B/ptuning/self_data/train.json \
@@ -16,10 +17,10 @@ torchrun --standalone --nnodes=1 --nproc-per-node=$NUM_GPUS main.py \
     --max_target_length 128 \
     --per_device_train_batch_size 1 \
     --per_device_eval_batch_size 1 \
-    --gradient_accumulation_steps 1 \
+    --gradient_accumulation_steps 2 \
     --predict_with_generate \
     --max_steps 100 \
-    --logging_steps 1 \
+    --logging_steps 2 \
     --save_steps 2 \
     --learning_rate $LR \
     --pre_seq_len $PRE_SEQ_LEN \
